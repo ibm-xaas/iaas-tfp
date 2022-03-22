@@ -1,4 +1,4 @@
-[![pre-commit](https://github.com/ibm-xaas/iaas-tfp/actions/workflows/pre-commit.yaml/badge.svg)](https://github.com/ibm-xaas/iaas-tfp/actions/workflows/pre-commit.yaml)
+[![pre-commit](https://github.com/ibm-xaas/iaas-tfp/actions/workflows/pre-commit.yaml/badge.svg?branch=main)](https://github.com/ibm-xaas/iaas-tfp/actions/workflows/pre-commit.yaml)
 # iaas-tfp (Not Started yet.)
 
 The purpose of this repo is to build some examples for IaaS (Infrastructure as a Service) features of IBM Cloud using IBM Terraform Provider.
