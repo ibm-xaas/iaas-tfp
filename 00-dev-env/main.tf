@@ -100,7 +100,7 @@ resource "null_resource" "run_packer" {
 
   provisioner "local-exec" {
     command = <<EOH
-cd ../packer
+cd ./packer
 ansible-galaxy install geerlingguy.docker
 ansible-galaxy install vantaworks.goss
 packer version
