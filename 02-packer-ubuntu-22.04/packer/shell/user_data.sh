@@ -24,3 +24,5 @@ retry 10 60 sudo apt remove unattended-upgrades -y
 apt list | grep unattended
 retry 10 60 sudo apt purge unattended-upgrades -y
 apt list | grep unattended
+curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh  | sh -s -- -b /usr/local/bin
+curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
