@@ -90,7 +90,7 @@ data "ibm_is_image" "ubuntu" {
 
 locals {
   version         = var.image_version
-  last_image_name = "${var.image_name}-${local.version}-${random_id.this.hex}"
+  last_image_name = "ubuntu-${local.version}-${random_id.this.hex}"
 }
 
 resource "null_resource" "run_packer" {
@@ -125,7 +125,7 @@ data "ibm_is_image" "ubuntu-docker" {
   depends_on = [
     null_resource.run_packer
   ]
-  name = local.last_image_name
+  name = "${local.last_image_name}-jammy"
 }
 
 resource "ibm_is_instance" "one_from_the_image" {

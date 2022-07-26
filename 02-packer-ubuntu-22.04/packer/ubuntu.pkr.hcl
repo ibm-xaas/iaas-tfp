@@ -48,19 +48,42 @@ locals {
   timestamp = regex_replace(timestamp(), "[- TZ:]", "")
 }
 
-source "ibmcloud-vpc" "ubuntu" {
+source "ibmcloud-vpc" "ubuntu-focal" {
   api_key = "${var.ibm_api_key}"
   region  = var.region
 
   subnet_id         = var.subnet_id
   resource_group_id = var.resource_group_id
 
-  vsi_base_image_name = var.vsi_base_image_name
+  #vsi_base_image_name = var.vsi_base_image_name
+  vsi_base_image_name = "ibm-ubuntu-20-04-3-minimal-amd64-1"
   vsi_profile         = var.vsi_profile
   vsi_interface       = "public"
   vsi_user_data_file  = var.vsi_user_data_file
 
-  image_name = var.image_name
+  image_name = "${var.image_name}-focal"
+
+  communicator = "ssh"
+  ssh_username = "root"
+  ssh_port     = 22
+  ssh_timeout  = "15m"
+
+  timeout = "30m"
+}
+source "ibmcloud-vpc" "ubuntu-jammy" {
+  api_key = "${var.ibm_api_key}"
+  region  = var.region
+
+  subnet_id         = var.subnet_id
+  resource_group_id = var.resource_group_id
+
+  #vsi_base_image_name = var.vsi_base_image_name
+  vsi_base_image_name = "ibm-ubuntu-22-04-minimal-amd64-1"
+  vsi_profile         = var.vsi_profile
+  vsi_interface       = "public"
+  vsi_user_data_file  = var.vsi_user_data_file
+
+  image_name = "${var.image_name}-jammy"
 
   communicator = "ssh"
   ssh_username = "root"
@@ -72,7 +95,8 @@ source "ibmcloud-vpc" "ubuntu" {
 
 build {
   sources = [
-    "source.ibmcloud-vpc.ubuntu"
+    "source.ibmcloud-vpc.ubuntu-focal",
+    "source.ibmcloud-vpc.ubuntu-jammy"
   ]
 
   provisioner "comment" {
