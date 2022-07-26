@@ -104,7 +104,7 @@ cd ./packer
 ansible-galaxy install geerlingguy.docker
 ansible-galaxy install vantaworks.goss
 packer version
-packer init ./ubuntu_focal.pkr.hcl
+packer init ./ubuntu.pkr.hcl
 timeout 60m packer build \
 -var region=${var.region} \
 -var subnet_id=${ibm_is_subnet.this.id} \
@@ -116,7 +116,7 @@ timeout 60m packer build \
 -var image_name=${local.last_image_name} \
 -force \
 -color=false \
-./ubuntu_focal.pkr.hcl
+./ubuntu.pkr.hcl
 EOH
   }
 }

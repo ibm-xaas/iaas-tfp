@@ -48,7 +48,7 @@ locals {
   timestamp = regex_replace(timestamp(), "[- TZ:]", "")
 }
 
-source "ibmcloud-vpc" "ubuntu-focal" {
+source "ibmcloud-vpc" "ubuntu" {
   api_key = "${var.ibm_api_key}"
   region  = var.region
 
@@ -72,7 +72,7 @@ source "ibmcloud-vpc" "ubuntu-focal" {
 
 build {
   sources = [
-    "source.ibmcloud-vpc.ubuntu-focal"
+    "source.ibmcloud-vpc.ubuntu"
   ]
 
   provisioner "comment" {
@@ -96,7 +96,7 @@ build {
     ]
   }
   provisioner "comment" {
-    comment = "SEUNGYEOP"
+    comment = "SYYANG"
     ui = true
     bubble_text = true
   }
