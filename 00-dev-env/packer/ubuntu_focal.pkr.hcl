@@ -85,6 +85,10 @@ build {
   }
   provisioner "ansible" {
     playbook_file = var.ansible_file
+    ansible_env_vars = [
+      "ANSIBLE_SSH_ARGS='-oHostKeyAlgorithms=+ssh-rsa -oPubkeyAcceptedKeyTypes=+ssh-rsa'",
+      "ANSIBLE_HOST_KEY_CHECKING=False"
+    ]
   }
   provisioner "goss" {
     tests = [
